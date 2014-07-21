@@ -1,0 +1,35 @@
+{
+  "name": "angular-auth",
+  "version": "0.0.0",
+  "description": "This is an authorization and authentication component for Angular JS applications.",
+  "main": "app.js",
+  "scripts": {
+    "test": "./node_modules/karma/bin/karma start test/karma.conf.coffee"
+  },
+  "keywords": [
+    "authentication",
+    "authorization"
+  ],
+  "author": "Nathan A Sculli <nathan.sculli@allegiantair.com>",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "coffee-script": "^1.7.1",
+    "gulp": "^3.8.6",
+    "jscoverage": "^0.5.5",
+    "karma": "^0.12.17",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^0.1.4",
+    "karma-coffee-preprocessor": "^0.2.1",
+    "karma-coverage": "^0.2.4",
+    "karma-jasmine": "^0.1.5",
+    "karma-mocha": "^0.1.6",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "karma-sinon": "^1.0.3",
+    "mocha": "^1.20.1",
+    "phantomjs": "^1.9.7-14",
+    "sinon": "^1.10.3",
+    "sinon-chai": "^2.5.0"
+  }
+}
