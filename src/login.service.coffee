@@ -12,7 +12,7 @@ module.factory 'saLogin', [
   'urlService'
   'AUTH_EVENTS'
 
-  ($http, saSession, urlService, AUTH_EVENTS) ->
+  ($http, $rootScope, saSession, urlService, AUTH_EVENTS) ->
 
     service =
       # `login`
@@ -23,8 +23,8 @@ module.factory 'saLogin', [
       # @return {Promise}
       # @api {public}
       login: (credentials) ->
-        promise = $http.post(urlService('login'), credentials)
-        promise.then (res) ->
+        request = $http.post(urlService('login'), credentials)
+        request.success (res) ->
             $rootScope.$broadcast AUTH_EVENTS.loginSuccess, res
 
       # `logout`
@@ -33,12 +33,12 @@ module.factory 'saLogin', [
       # @return {Promise}
       # @api (public}
       logout: () ->
-        promise = $http.post(urlService('logout'), {})
-        promise.then (res) ->
-          session.destroy() if @isAuthenticated()
+        request = $http.post(urlService('logout'), {})
+        request.success (res) =>
+          saSession.destroy() if @isAuthenticated()
           $rootScope.$broadcast AUTH_EVENTS.logoutSuccess, res
 
-        return promise
+        return request
 
       # `isAuthenticated`
       # -----------------
