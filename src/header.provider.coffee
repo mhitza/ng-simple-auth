@@ -4,18 +4,18 @@
 # given key from the given response headers.
 module = angular.module 'SimpleAuth.HeaderService', []
 
+# `header_map`
+# -------------
+# This object maintains a list of the data value key to
+# header name mappings.
+# @type {Object.<string,string>}
+# @api {private}
+header_map =
+  user: 'x-authenticate-user'
+  token: 'x-access-token'
+
 class headerServiceProvider
   constructor: () ->
-    # `header_map`
-    # -------------
-    # This object maintains a list of the data value key to
-    # header name mappings.
-    # @type {Object.<string,string>}
-    # @api {private}
-    @header_map =
-      user: 'x-authenticate-user'
-      token: 'x-access-token'
-
     # `headerService`
     # ---------------
     # Service function that will retrieve the value from the
@@ -25,7 +25,10 @@ class headerServiceProvider
     # @return {*}
     # @api {public}
     @headerService = (res, data_key) ->
-      header_name = @header_map[data_key]
+      header_name = header_map[data_key]
+
+      if not header_name then return null
+
       return res.headers header_name
 
   # `setKey`
@@ -37,7 +40,7 @@ class headerServiceProvider
   # @return {headerService}
   # @api {public}
   setKey: (value_name, header_name) ->
-    @header_map[value_name] = header_name
+    header_map[value_name] = header_name
     return @
   # `$get`
   # ------
