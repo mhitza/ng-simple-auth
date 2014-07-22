@@ -1,17 +1,20 @@
 
 module = angular.module 'SimpleAuth.UrlService', []
 
+
+# `url_list`
+# ----------
+# A keyed list of URLs that are utilized in the SimpleAuth
+# module.
+# @type {Object.<string,string>}
+# @api {private}
+url_list =
+  login: '/login'
+  logout: '/logout'
+
 class urlServiceProvider
   constructor: () ->
-    # `url_list`
-    # ----------
-    # A keyed list of URLs that are utilized in the SimpleAuth
-    # module.
-    # @type {Object.<string,string>}
-    # @api {private}
-    @url_list =
-      login: '/login'
-      logout: '/logout'
+
 
     # `urlService`
     # ------------
@@ -21,6 +24,7 @@ class urlServiceProvider
     # @return {string}
     # @api {public}
     @urlService = (name) ->
+      if not url_list[name] then return null
       return url_list[name]
 
   # `setUrl`
