@@ -43,7 +43,8 @@ module.factory 'saSession', [
       hasRole: (roles) ->
         if not @isValid() then return false
 
-        roles = [ roles ] if not angular.isArray(roles)
+        if not angular.isArray(roles)
+          roles = [ roles ]
 
         return true for role in roles when @roles.indexOf(role) isnt -1
 
@@ -72,10 +73,13 @@ module.factory 'saSession', [
       setUser: (user) ->
         user = angular.fromJson(user) if angular.isString(user)
 
-        if not angular.equals(user, @user)
+        if not user
+          @user = $rootScope.user = null
+
+        else if not angular.equals(user, @user)
           @user = $rootScope.user = user
 
-          @roles = user.roles if angular.isArray(user?.roles)
+          @roles = user.roles if angular.isArray(user.roles)
 
           $rootScope.$broadcast AUTH_EVENTS.userChange, @user
 

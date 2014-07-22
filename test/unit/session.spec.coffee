@@ -179,6 +179,14 @@ describe 'saSession', ->
     it 'should be a function ', ->
       expect(session.setUser).to.be.a 'function'
 
+    it 'should set the user to null if a user object is not provided', ->
+      expect(session.user).to.be.undefined
+
+      session.setUser()
+
+      expect(session.user).to.be.null
+      expect(scope.user).to.be.null
+
     it 'should set the user to the given user object if one is not already set', ->
       user =
         name: 'test'
@@ -188,6 +196,7 @@ describe 'saSession', ->
       session.setUser user
 
       expect(session.user).to.eql user
+      expect(scope.user).to.eql user
 
     it 'should not set the user if the given user is not different than the current user', ->
       sinon.spy scope, '$broadcast'
@@ -237,3 +246,12 @@ describe 'saSession', ->
 
       session.setToken token
       expect(session.token).to.eql token
+
+    it 'should not set the token if it is equal to the current token', ->
+      token = 'test'
+      expect(session.token).to.be.undefined
+      session.setToken token
+      expect(session.token).to.eql token
+
+      session.setToken token
+      expect(session.token).to.eql 'test'
