@@ -85,7 +85,7 @@ module.exports = (config) ->
 
     # Continuous Integration mode
     # if true, Karma captures browsers, runs the tests and exits
-    singleRun: false
+    singleRun: true
 
     # Configure the coverage reporter
     coverageReporter:
@@ -93,4 +93,5 @@ module.exports = (config) ->
         { type: 'html', dir: 'coverage' }
         { type: 'text' }
         { type: 'cobertura' }
+        { type: 'lcov' }
       ]
