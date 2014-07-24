@@ -5,4 +5,4 @@ node_js:
 before_script:
   - "./node_modules/.bin/bower install"
 after_script:
-  - "cat ./test/coverage/PhantomJS\ 1.9.7\ (Mac\ OS\ X)/lcov.info | ./node_modules/.bin/coveralls"
+  - "cat ./test/coverage/PhantomJS\ 1.9.7\ \(Mac\ OS\ X\)/lcov.info | ./node_modules/.bin/coveralls"
