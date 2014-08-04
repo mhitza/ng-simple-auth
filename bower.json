@@ -5,7 +5,7 @@
     "Nathan Sculli <nathan.sculli@allegiantair.com>"
   ],
   "description": "This is an authorization and authentication component for AngularJS applications.",
-  "main": "app.js",
+  "main": "dist/app.js",
   "keywords": [
     "Authentication",
     "Authorization"
@@ -19,7 +19,9 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "~1.2.20",
-    "angular-mocks": "~1.2.20"
+    "angular": "~1.2.21"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.2.21"
   }
 }
