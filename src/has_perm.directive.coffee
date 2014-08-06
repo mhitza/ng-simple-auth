@@ -22,7 +22,7 @@ module.directive 'saHasPerm', [
         toggle = () ->
           if saSession.hasRole perms then show() else hide()
 
-        hide()
+        toggle()
 
         $rootScope.$on AUTH_EVENTS.userChange, toggle
     }
