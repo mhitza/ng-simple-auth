@@ -42,7 +42,7 @@
               return hide();
             }
           };
-          hide();
+          toggle();
           return $rootScope.$on(AUTH_EVENTS.userChange, toggle);
         }
       };
